@@ -1,0 +1,1519 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Rasoiya - Restaurant & Caterers | Ranchi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #d4a373;
+            --primary-dark: #bc8a5f;
+            --secondary: #faedcd;
+            --dark: #1a1a1a;
+            --darker: #0f0f0f;
+            --light: #fefae0;
+            --accent: #e63946;
+            --gold: #d4a373;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--darker);
+            color: var(--light);
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--dark);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            background: transparent;
+        }
+
+        nav.scrolled {
+            background: rgba(15, 15, 15, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+            padding: 0.8rem 5%;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--gold);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo i {
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gold);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(15,15,15,0.8) 0%, rgba(26,26,26,0.6) 100%),
+                        url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4a373' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            padding: 0 2rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(212, 163, 115, 0.2);
+            border: 1px solid var(--primary);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            background: linear-gradient(135deg, var(--light) 0%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: rgba(254, 250, 224, 0.8);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .hero-rating {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stars {
+            color: #ffc107;
+            font-size: 1.2rem;
+        }
+
+        .rating-text {
+            font-size: 1.1rem;
+            color: var(--light);
+        }
+
+        .rating-text span {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--darker);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(212, 163, 115, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--light);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: var(--darker);
+            transform: translateY(-3px);
+        }
+
+        /* Floating Info Cards */
+        .floating-info {
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 1.5rem;
+            z-index: 10;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .info-card {
+            background: var(--dark);
+            border: 1px solid rgba(212, 163, 115, 0.3);
+            padding: 1.5rem 2rem;
+            border-radius: 15px;
+            text-align: center;
+            min-width: 180px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .info-card i {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .info-card h4 {
+            font-size: 0.9rem;
+            color: rgba(254, 250, 224, 0.7);
+            margin-bottom: 0.3rem;
+        }
+
+        .info-card p {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--light);
+        }
+
+        /* About Section */
+        .about {
+            padding: 8rem 5% 4rem;
+            background: var(--darker);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--light);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header .subtitle {
+            color: var(--primary);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 20px;
+            transition: transform 0.5s;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: -20px;
+            bottom: -20px;
+            border: 2px solid var(--primary);
+            border-radius: 20px;
+            z-index: -1;
+        }
+
+        .about-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .about-content p {
+            color: rgba(254, 250, 224, 0.7);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .feature-item i {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-top: 0.2rem;
+        }
+
+        .feature-item h4 {
+            font-size: 1rem;
+            color: var(--light);
+            margin-bottom: 0.3rem;
+        }
+
+        .feature-item p {
+            font-size: 0.9rem;
+            color: rgba(254, 250, 224, 0.6);
+            margin: 0;
+        }
+
+        /* Menu Section */
+        .menu-section {
+            padding: 5rem 5%;
+            background: var(--dark);
+        }
+
+        .menu-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .menu-tab {
+            padding: 0.8rem 2rem;
+            background: transparent;
+            border: 2px solid rgba(212, 163, 115, 0.3);
+            color: var(--light);
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .menu-tab.active, .menu-tab:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: var(--darker);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .menu-card {
+            background: var(--darker);
+            border: 1px solid rgba(212, 163, 115, 0.2);
+            border-radius: 15px;
+            padding: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .menu-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .menu-card-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 12px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .menu-card-content {
+            flex: 1;
+        }
+
+        .menu-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-card h4 {
+            font-size: 1.1rem;
+            color: var(--light);
+        }
+
+        .menu-card .price {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .menu-card p {
+            font-size: 0.9rem;
+            color: rgba(254, 250, 224, 0.6);
+            line-height: 1.5;
+        }
+
+        .menu-card .tag {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            background: rgba(212, 163, 115, 0.2);
+            color: var(--primary);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 5rem 5%;
+            background: var(--darker);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 250px);
+            gap: 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+
+        .gallery-item.large {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        /* Reviews Section */
+        .reviews {
+            padding: 5rem 5%;
+            background: var(--dark);
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .review-card {
+            background: var(--darker);
+            border: 1px solid rgba(212, 163, 115, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .review-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .reviewer-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .reviewer-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--darker);
+            font-size: 1.2rem;
+        }
+
+        .reviewer-name {
+            font-weight: 600;
+            color: var(--light);
+        }
+
+        .review-date {
+            font-size: 0.85rem;
+            color: rgba(254, 250, 224, 0.5);
+        }
+
+        .review-stars {
+            color: #ffc107;
+            margin-bottom: 1rem;
+        }
+
+        .review-text {
+            color: rgba(254, 250, 224, 0.7);
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        /* Location & Contact */
+        .contact {
+            padding: 5rem 5%;
+            background: var(--darker);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .contact-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item i {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-top: 0.3rem;
+        }
+
+        .contact-item h4 {
+            font-size: 1.1rem;
+            color: var(--light);
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-item p {
+            color: rgba(254, 250, 224, 0.7);
+            line-height: 1.6;
+        }
+
+        .map-container {
+            border-radius: 20px;
+            overflow: hidden;
+            border: 2px solid rgba(212, 163, 115, 0.3);
+            height: 400px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Footer */
+        footer {
+            background: #0a0a0a;
+            padding: 3rem 5% 1rem;
+            border-top: 1px solid rgba(212, 163, 115, 0.2);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+        }
+
+        .footer-brand h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            color: rgba(254, 250, 224, 0.6);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(212, 163, 115, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            color: var(--darker);
+            transform: translateY(-3px);
+        }
+
+        .footer-links h4 {
+            color: var(--light);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(254, 250, 224, 0.6);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(212, 163, 115, 0.1);
+            color: rgba(254, 250, 224, 0.4);
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .about-grid, .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(3, 200px);
+            }
+
+            .gallery-item.large {
+                grid-column: span 2;
+                grid-row: span 1;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .floating-info {
+                bottom: -30px;
+            }
+
+            .info-card {
+                min-width: 140px;
+                padding: 1rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(6, 200px);
+            }
+
+            .gallery-item.large {
+                grid-column: span 1;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+        }
+
+        /* Mobile Menu Panel */
+        .mobile-panel {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 300px;
+            height: 100vh;
+            background: var(--dark);
+            z-index: 1001;
+            padding: 2rem;
+            transition: right 0.3s ease;
+            box-shadow: -5px 0 30px rgba(0,0,0,0.5);
+        }
+
+        .mobile-panel.active {
+            right: 0;
+        }
+
+        .mobile-panel .close-btn {
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+            margin-bottom: 2rem;
+            display: block;
+            text-align: right;
+        }
+
+        .mobile-panel ul {
+            list-style: none;
+        }
+
+        .mobile-panel li {
+            margin-bottom: 1.5rem;
+        }
+
+        .mobile-panel a {
+            color: var(--light);
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="#" class="logo">
+            <i class="fas fa-utensils"></i>
+            The Rasoiya
+        </a>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="mobile-menu" onclick="toggleMobileMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="overlay" onclick="toggleMobileMenu()"></div>
+    <div class="mobile-panel" id="mobilePanel">
+        <span class="close-btn" onclick="toggleMobileMenu()">
+            <i class="fas fa-times"></i>
+        </span>
+        <ul>
+            <li><a href="#home" onclick="toggleMobileMenu()">Home</a></li>
+            <li><a href="#about" onclick="toggleMobileMenu()">About</a></li>
+            <li><a href="#menu" onclick="toggleMobileMenu()">Menu</a></li>
+            <li><a href="#gallery" onclick="toggleMobileMenu()">Gallery</a></li>
+            <li><a href="#reviews" onclick="toggleMobileMenu()">Reviews</a></li>
+            <li><a href="#contact" onclick="toggleMobileMenu()">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-star"></i>
+                Ranchi ka Best Restaurant
+            </div>
+            <h1>The Rasoiya</h1>
+            <p class="hero-subtitle">Restaurant & Caterers — Authentic North Indian, Chinese & Biryani</p>
+            <div class="hero-rating">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <div class="rating-text">
+                    <span>4.8</span> Rating · <span>36</span> Reviews · ₹400 for two
+                </div>
+            </div>
+            <div class="hero-buttons">
+                <a href="#menu" class="btn btn-primary">
+                    <i class="fas fa-book-open"></i>
+                    View Menu
+                </a>
+                <a href="tel:+919876543210" class="btn btn-outline">
+                    <i class="fas fa-phone"></i>
+                    Call Now
+                </a>
+            </div>
+        </div>
+
+        <div class="floating-info">
+            <div class="info-card">
+                <i class="fas fa-clock"></i>
+                <h4>Timings</h4>
+                <p>11 AM - 8 PM</p>
+            </div>
+            <div class="info-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <h4>Location</h4>
+                <p>Lalgutwa, Ranchi</p>
+            </div>
+            <div class="info-card">
+                <i class="fas fa-rupee-sign"></i>
+                <h4>Budget</h4>
+                <p>₹400 for Two</p>
+            </div>
+            <div class="info-card">
+                <i class="fas fa-truck"></i>
+                <h4>Service</h4>
+                <p>Dine-in / Takeaway</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="section-header fade-in">
+            <p class="subtitle">Our Story</p>
+            <h2>About The Rasoiya</h2>
+        </div>
+        <div class="about-grid">
+            <div class="about-image fade-in">
+                <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Restaurant Interior">
+            </div>
+            <div class="about-content fade-in">
+                <h3>Swad Se Bharpoor, Seva Se Behtar</h3>
+                <p>The Rasoiya Ranchi mein ek premium restaurant aur catering service hai jo North Indian, Chinese, Biryani, Rolls aur Street Food serve karta hai. Hamara mission hai ki har guest ko ghar jaisa swad aur royal experience mile.</p>
+                <p>Located at Plot 390, Khata 174, Lalgutwa, Ratu, Ranchi — hum local families, office groups aur special occasions ke liye perfect destination hain.</p>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <i class="fas fa-leaf"></i>
+                        <div>
+                            <h4>Fresh Ingredients</h4>
+                            <p>Roz fresh vegetables aur premium quality meat</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-fire"></i>
+                        <div>
+                            <h4>Authentic Taste</h4>
+                            <p>Traditional recipes with desi tadka</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-users"></i>
+                        <div>
+                            <h4>Catering Service</h4>
+                            <p>Weddings, parties & corporate events</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-smile"></i>
+                        <div>
+                            <h4>Happy Customers</h4>
+                            <p>4.8★ rating with 36+ reviews</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu-section" id="menu">
+        <div class="section-header fade-in">
+            <p class="subtitle">Our Specialties</p>
+            <h2>Popular Menu</h2>
+        </div>
+
+        <div class="menu-tabs fade-in">
+            <button class="menu-tab active" onclick="filterMenu('all')">All Items</button>
+            <button class="menu-tab" onclick="filterMenu('chinese')">Chinese</button>
+            <button class="menu-tab" onclick="filterMenu('biryani')">Biryani</button>
+            <button class="menu-tab" onclick="filterMenu('rolls')">Rolls</button>
+            <button class="menu-tab" onclick="filterMenu('north')">North Indian</button>
+        </div>
+
+        <div class="menu-grid" id="menuGrid">
+            <div class="menu-card" data-category="chinese">
+                <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" class="menu-card-image" alt="Chicken Chilli">
+                <div class="menu-card-content">
+                    <div class="menu-card-header">
+                        <h4>Chicken Chilli (Boneless)</h4>
+                        <span class="price">₹140/80</span>
+                    </div>
+                    <p>Crispy boneless chicken tossed in spicy Chinese sauce with capsicum & onions</p>
+                    <span class="tag">Chinese</span>
+                </div>
+            </div>
+
+            <div class="menu-card" data-category="chinese">
+                <img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" class="menu-card-image" alt="Chicken Fried Rice">
+                <div class="menu-card-content">
+                    <div class="menu-card-header">
+                        <h4>Chicken Fried Rice</h4>
+                        <span class="price">₹109/70</span>
+                    </div>
+                    <p>Fragrant rice stir-fried with tender chicken pieces and mixed vegetables</p>
+                    <span class="tag">Chinese</span>
+                </div>
+            </div>
+
+            <div class="menu-card" data-category="chinese">
+                <img src="https://images.unsplash.com/photo-1525755662778-989d0524087e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" class="menu-card-image" alt="Egg Chowmein">
+                <div class="menu-card-content">
+                    <div class="menu-card-header">
+                        <h4>Egg Chowmein</h4>
+                        <span class="price">₹85/55</span>
+                    </div>
+                    <p>Classic hakka noodles loaded with scrambled eggs and fresh veggies</p>
+                    <span class="tag">Chinese</span>
+                </div>
+            </div>
+
+            <div class="menu-card" data-category="rolls">
+                <img src="https://images.unsplash.com/photo-1625220194771-7eb0f82d0ac4?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" class="menu-card-image" alt="Double Egg Roll">
+                <div class="menu-card-content">
+                    <div class="menu-card-header">
+                        <h4>Double Egg Roll</h4>
+                        <span class="price">₹59</span>
+                    </div>
+                    <p>Double egg wrapped in soft paratha with spicy sauce and crunchy veggies</p>
+                    <span class="tag">Rolls</span>
+                </div>
+            </div>
+
+            <div class="menu-card" data-category="rolls">
+                <img src="https://images.unsplash.com/photo-1606491956689-2ea866880c84?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" class="menu-card-image" alt="Chicken Egg Roll">
+                <div class="menu-card-content">
+                    <div class="menu-card-header">
+                        <h4>Chicken Egg Roll</h4>
+                        <span class="price">₹89</span>
+                    </div>
+                    <p>Juicy chicken chunks with egg wrapped in flaky paratha</p>
+                    <span class="tag">Rolls</span>
+                </div>
+            </div>
+
+            <div class="menu-card" data-category="rolls">
+                <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" class="menu-card-image" alt="Mutton Roll">
+                <div class="menu-card-content">
+                    <div class="menu-card-header">
+                        <h4>Mutton Roll</h4>
+                        <span class="price">₹159</span>
+                    </div>
+                    <p>Tender mutton pieces wrapped in paratha with special masala</p>
+                    <span class="tag">Rolls</span>
+                </div>
+            </div>
+
+            <div class="menu-card" data-category="biryani">
+                <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" class="menu-card-image" alt="Chicken Biryani">
+                <div class="menu-card-content">
+                    <div class="menu-card-header">
+                        <h4>Chicken Biryani</h4>
+                        <span class="price">₹180</span>
+                    </div>
+                    <p>Aromatic basmati rice cooked with tender chicken and secret spices</p>
+                    <span class="tag">Biryani</span>
+                </div>
+            </div>
+
+            <div class="menu-card" data-category="chinese">
+                <img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" class="menu-card-image" alt="Chicken Popcorn">
+                <div class="menu-card-content">
+                    <div class="menu-card-header">
+                        <h4>Chicken Popcorn</h4>
+                        <span class="price">₹180</span>
+                    </div>
+                    <p>Crispy bite-sized chicken pieces perfect for snacking</p>
+                    <span class="tag">Chinese</span>
+                </div>
+            </div>
+
+            <div class="menu-card" data-category="chinese">
+                <img src="https://images.unsplash.com/photo-1552611052-33e04de081de?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" class="menu-card-image" alt="Shanghai Mix">
+                <div class="menu-card-content">
+                    <div class="menu-card-header">
+                        <h4>Shanghai Mix</h4>
+                        <span class="price">₹150</span>
+                    </div>
+                    <p>Exotic mix of chicken, veggies and Shanghai-style sauce</p>
+                    <span class="tag">Chinese</span>
+                </div>
+            </div>
+
+            <div class="menu-card" data-category="north">
+                <img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" class="menu-card-image" alt="Non-Veg Hakka Noodles">
+                <div class="menu-card-content">
+                    <div class="menu-card-header">
+                        <h4>Non-Veg Hakka Noodles</h4>
+                        <span class="price">₹130</span>
+                    </div>
+                    <p>Desi-style hakka noodles loaded with chicken and egg</p>
+                    <span class="tag">North Indian</span>
+                </div>
+            </div>
+
+            <div class="menu-card" data-category="chinese">
+                <img src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" class="menu-card-image" alt="Chicken Spring Roll">
+                <div class="menu-card-content">
+                    <div class="menu-card-header">
+                        <h4>Chicken Spring Roll</h4>
+                        <span class="price">₹130/80</span>
+                    </div>
+                    <p>Crispy rolls stuffed with minced chicken and vegetables</p>
+                    <span class="tag">Chinese</span>
+                </div>
+            </div>
+
+            <div class="menu-card" data-category="chinese">
+                <img src="https://images.unsplash.com/photo-1529006557810-274b9b2fc783?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" class="menu-card-image" alt="Mix Chowmein">
+                <div class="menu-card-content">
+                    <div class="menu-card-header">
+                        <h4>Mix Chowmein</h4>
+                        <span class="price">₹129/70</span>
+                    </div>
+                    <p>Combination of egg, chicken and veggies in one delicious plate</p>
+                    <span class="tag">Chinese</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="section-header fade-in">
+            <p class="subtitle">Visual Treat</p>
+            <h2>Food Gallery</h2>
+        </div>
+        <div class="gallery-grid fade-in">
+            <div class="gallery-item large">
+                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Grilled Chicken">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Biryani">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1606491956689-2ea866880c84?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Rolls">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Fried Rice">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1585937421612-70a97da0856b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Noodles">
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews" id="reviews">
+        <div class="section-header fade-in">
+            <p class="subtitle">Testimonials</p>
+            <h2>Customer Reviews</h2>
+        </div>
+        <div class="reviews-grid">
+            <div class="review-card fade-in">
+                <div class="review-header">
+                    <div class="reviewer-info">
+                        <div class="reviewer-avatar">M</div>
+                        <div>
+                            <div class="reviewer-name">Manoj Kumar</div>
+                            <div class="review-date">2 months ago</div>
+                        </div>
+                    </div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                <div class="review-stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="review-text">"The Rasoiya is an excellent restaurant! The food is reasonably priced and worth the money. The quantity of food is good too. I highly recommend it!"</p>
+            </div>
+
+            <div class="review-card fade-in">
+                <div class="review-header">
+                    <div class="reviewer-info">
+                        <div class="reviewer-avatar">R</div>
+                        <div>
+                            <div class="reviewer-name">Rahul Singh</div>
+                            <div class="review-date">1 month ago</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <p class="review-text">"Best food with affordable prices, nice atmosphere. Totally awesome. Love you The Rasoiya. Chicken biryani and rolls are must-try!"</p>
+            </div>
+
+            <div class="review-card fade-in">
+                <div class="review-header">
+                    <div class="reviewer-info">
+                        <div class="reviewer-avatar">A</div>
+                        <div>
+                            <div class="reviewer-name">Amit Sharma</div>
+                            <div class="review-date">3 weeks ago</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="review-text">"Great place for family dinners. Their catering service for my brother's wedding was fantastic. Everyone loved the food quality and presentation."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="section-header fade-in">
+            <p class="subtitle">Get In Touch</p>
+            <h2>Visit Us</h2>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-info fade-in">
+                <h3>Contact Information</h3>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h4>Address</h4>
+                        <p>Plot 390, Khata 174, Lalgutwa, Talab, Ratu, Ranchi, Gutwa, Jharkhand 835303</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <h4>Opening Hours</h4>
+                        <p>Monday - Sunday: 11:00 AM - 8:00 PM<br>Closes 9 PM · Reopens 9:45 PM</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <h4>Phone</h4>
+                        <p>+91 98765 43210<br>Call for orders & catering</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h4>Email</h4>
+                        <p>therasoiya.ranchi@gmail.com</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-utensils"></i>
+                    <div>
+                        <h4>Cuisines</h4>
+                        <p>North Indian, Chinese, Biryani, Rolls, Street Food</p>
+                    </div>
+                </div>
+                <a href="https://www.google.com/maps/dir//Lalgutwa,+talab,+Ranchi,+Gutwa,+Jharkhand+835303" target="_blank" class="btn btn-primary" style="margin-top: 1rem;">
+                    <i class="fas fa-location-arrow"></i>
+                    Get Directions
+                </a>
+            </div>
+            <div class="map-container fade-in">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3662.8575!2d85.25!3d23.35!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDIxJzAwLjAiTiA4NcKwMTUnMDAuMCJF!5e0!3m2!1sen!2sin!4v1" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h3><i class="fas fa-utensils"></i> The Rasoiya</h3>
+                <p>Ranchi ka apna restaurant! Authentic North Indian, Chinese, Biryani aur Street Food ka asli swad. Dine-in, Takeaway aur Catering services available.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-google"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#">Dine-in</a></li>
+                    <li><a href="#">Takeaway</a></li>
+                    <li><a href="#">Catering</a></li>
+                    <li><a href="#">Party Orders</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#contact">Contact Us</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 The Rasoiya Restaurant & Caterers. All Rights Reserved. Made with <i class="fas fa-heart" style="color: var(--accent);"></i> in Ranchi</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            document.getElementById('mobilePanel').classList.toggle('active');
+            document.querySelector('.overlay').classList.toggle('active');
+        }
+
+        // Menu filtering
+        function filterMenu(category) {
+            const cards = document.querySelectorAll('.menu-card');
+            const tabs = document.querySelectorAll('.menu-tab');
+
+            tabs.forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'flex';
+                    card.style.animation = 'fadeInUp 0.5s ease';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
