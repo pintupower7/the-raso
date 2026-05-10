@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+html_content = '''<!DOCTYPE html>
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
@@ -17,24 +18,24 @@
             --accent: #e63946;
             --gold: #d4a373;
         }
-
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         html {
             scroll-behavior: smooth;
         }
-
+        
         body {
             font-family: 'Poppins', sans-serif;
             background: var(--darker);
             color: var(--light);
             overflow-x: hidden;
         }
-
+        
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
@@ -46,7 +47,7 @@
             background: var(--primary);
             border-radius: 4px;
         }
-
+        
         /* Navigation */
         nav {
             position: fixed;
@@ -60,14 +61,14 @@
             transition: all 0.3s ease;
             background: transparent;
         }
-
+        
         nav.scrolled {
             background: rgba(15, 15, 15, 0.95);
             backdrop-filter: blur(10px);
             box-shadow: 0 5px 30px rgba(0,0,0,0.3);
             padding: 0.8rem 5%;
         }
-
+        
         .logo {
             font-family: 'Playfair Display', serif;
             font-size: 1.8rem;
@@ -78,17 +79,17 @@
             align-items: center;
             gap: 0.5rem;
         }
-
+        
         .logo i {
             font-size: 1.5rem;
         }
-
+        
         .nav-links {
             display: flex;
             gap: 2.5rem;
             list-style: none;
         }
-
+        
         .nav-links a {
             color: var(--light);
             text-decoration: none;
@@ -97,7 +98,7 @@
             position: relative;
             transition: color 0.3s;
         }
-
+        
         .nav-links a::after {
             content: '';
             position: absolute;
@@ -108,35 +109,36 @@
             background: var(--primary);
             transition: width 0.3s;
         }
-
+        
         .nav-links a:hover::after {
             width: 100%;
         }
-
+        
         .nav-links a:hover {
             color: var(--primary);
         }
-
+        
         .mobile-menu {
             display: none;
             font-size: 1.5rem;
             cursor: pointer;
             color: var(--gold);
         }
-
+        
         /* Hero Section */
         .hero {
-            height: 100vh;
-            background: linear-gradient(135deg, rgba(15,15,15,0.8) 0%, rgba(26,26,26,0.6) 100%),
+            min-height: 100vh;
+            background: linear-gradient(135deg, rgba(15,15,15,0.85) 0%, rgba(26,26,26,0.7) 100%),
                         url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
             position: relative;
-            overflow: hidden;
+            padding: 120px 2rem 180px;
         }
-
+        
         .hero::before {
             content: '';
             position: absolute;
@@ -147,15 +149,14 @@
             background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4a373' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
             opacity: 0.3;
         }
-
+        
         .hero-content {
             position: relative;
             z-index: 2;
             max-width: 900px;
-            padding: 0 2rem;
             animation: fadeInUp 1s ease;
         }
-
+        
         .hero-badge {
             display: inline-flex;
             align-items: center;
@@ -168,7 +169,7 @@
             margin-bottom: 1.5rem;
             color: var(--primary);
         }
-
+        
         .hero h1 {
             font-family: 'Playfair Display', serif;
             font-size: 4.5rem;
@@ -180,14 +181,14 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-
+        
         .hero-subtitle {
             font-size: 1.3rem;
             color: rgba(254, 250, 224, 0.8);
             margin-bottom: 2rem;
             font-weight: 300;
         }
-
+        
         .hero-rating {
             display: flex;
             align-items: center;
@@ -196,29 +197,29 @@
             margin-bottom: 2rem;
             flex-wrap: wrap;
         }
-
+        
         .stars {
             color: #ffc107;
             font-size: 1.2rem;
         }
-
+        
         .rating-text {
             font-size: 1.1rem;
             color: var(--light);
         }
-
+        
         .rating-text span {
             color: var(--primary);
             font-weight: 700;
         }
-
+        
         .hero-buttons {
             display: flex;
             gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
         }
-
+        
         .btn {
             padding: 1rem 2.5rem;
             border-radius: 50px;
@@ -232,102 +233,101 @@
             gap: 0.5rem;
             border: none;
         }
-
+        
         .btn-primary {
             background: var(--primary);
             color: var(--darker);
         }
-
+        
         .btn-primary:hover {
             background: var(--primary-dark);
             transform: translateY(-3px);
             box-shadow: 0 10px 30px rgba(212, 163, 115, 0.3);
         }
-
+        
         .btn-outline {
             background: transparent;
             color: var(--light);
             border: 2px solid var(--primary);
         }
-
+        
         .btn-outline:hover {
             background: var(--primary);
             color: var(--darker);
             transform: translateY(-3px);
         }
-
-        /* Floating Info Cards */
+        
+        /* Floating Info Cards - FIXED */
         .floating-info {
-            position: absolute;
-            bottom: -50px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 1.5rem;
+            position: relative;
             z-index: 10;
-            flex-wrap: wrap;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+            margin-top: 3rem;
+            width: 100%;
         }
-
+        
         .info-card {
             background: var(--dark);
             border: 1px solid rgba(212, 163, 115, 0.3);
-            padding: 1.5rem 2rem;
+            padding: 1.5rem 1rem;
             border-radius: 15px;
             text-align: center;
-            min-width: 180px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.3);
             transition: transform 0.3s;
         }
-
+        
         .info-card:hover {
             transform: translateY(-5px);
             border-color: var(--primary);
         }
-
+        
         .info-card i {
             font-size: 1.5rem;
             color: var(--primary);
             margin-bottom: 0.5rem;
         }
-
+        
         .info-card h4 {
             font-size: 0.9rem;
             color: rgba(254, 250, 224, 0.7);
             margin-bottom: 0.3rem;
         }
-
+        
         .info-card p {
             font-size: 1rem;
             font-weight: 600;
             color: var(--light);
         }
-
+        
         /* About Section */
         .about {
-            padding: 8rem 5% 4rem;
+            padding: 6rem 5% 4rem;
             background: var(--darker);
         }
-
+        
         .section-header {
             text-align: center;
             margin-bottom: 3rem;
         }
-
+        
         .section-header h2 {
             font-family: 'Playfair Display', serif;
             font-size: 2.8rem;
             color: var(--light);
             margin-bottom: 0.5rem;
         }
-
+        
         .section-header .subtitle {
             color: var(--primary);
             font-size: 1rem;
             text-transform: uppercase;
             letter-spacing: 3px;
         }
-
+        
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -336,13 +336,13 @@
             max-width: 1200px;
             margin: 0 auto;
         }
-
+        
         .about-image {
             position: relative;
             border-radius: 20px;
             overflow: hidden;
         }
-
+        
         .about-image img {
             width: 100%;
             height: 500px;
@@ -350,11 +350,11 @@
             border-radius: 20px;
             transition: transform 0.5s;
         }
-
+        
         .about-image:hover img {
             transform: scale(1.05);
         }
-
+        
         .about-image::after {
             content: '';
             position: absolute;
@@ -366,58 +366,58 @@
             border-radius: 20px;
             z-index: -1;
         }
-
+        
         .about-content h3 {
             font-family: 'Playfair Display', serif;
             font-size: 2rem;
             color: var(--primary);
             margin-bottom: 1rem;
         }
-
+        
         .about-content p {
             color: rgba(254, 250, 224, 0.7);
             line-height: 1.8;
             margin-bottom: 1.5rem;
             font-size: 1.05rem;
         }
-
+        
         .features-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 1.5rem;
             margin-top: 2rem;
         }
-
+        
         .feature-item {
             display: flex;
             align-items: flex-start;
             gap: 1rem;
         }
-
+        
         .feature-item i {
             font-size: 1.3rem;
             color: var(--primary);
             margin-top: 0.2rem;
         }
-
+        
         .feature-item h4 {
             font-size: 1rem;
             color: var(--light);
             margin-bottom: 0.3rem;
         }
-
+        
         .feature-item p {
             font-size: 0.9rem;
             color: rgba(254, 250, 224, 0.6);
             margin: 0;
         }
-
+        
         /* Menu Section */
         .menu-section {
             padding: 5rem 5%;
             background: var(--dark);
         }
-
+        
         .menu-tabs {
             display: flex;
             justify-content: center;
@@ -425,7 +425,7 @@
             margin-bottom: 3rem;
             flex-wrap: wrap;
         }
-
+        
         .menu-tab {
             padding: 0.8rem 2rem;
             background: transparent;
@@ -437,13 +437,13 @@
             transition: all 0.3s;
             font-family: 'Poppins', sans-serif;
         }
-
+        
         .menu-tab.active, .menu-tab:hover {
             background: var(--primary);
             border-color: var(--primary);
             color: var(--darker);
         }
-
+        
         .menu-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -451,7 +451,7 @@
             max-width: 1200px;
             margin: 0 auto;
         }
-
+        
         .menu-card {
             background: var(--darker);
             border: 1px solid rgba(212, 163, 115, 0.2);
@@ -462,13 +462,13 @@
             transition: all 0.3s;
             cursor: pointer;
         }
-
+        
         .menu-card:hover {
             border-color: var(--primary);
             transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
-
+        
         .menu-card-image {
             width: 100px;
             height: 100px;
@@ -476,35 +476,35 @@
             object-fit: cover;
             flex-shrink: 0;
         }
-
+        
         .menu-card-content {
             flex: 1;
         }
-
+        
         .menu-card-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 0.5rem;
         }
-
+        
         .menu-card h4 {
             font-size: 1.1rem;
             color: var(--light);
         }
-
+        
         .menu-card .price {
             color: var(--primary);
             font-weight: 700;
             font-size: 1.1rem;
         }
-
+        
         .menu-card p {
             font-size: 0.9rem;
             color: rgba(254, 250, 224, 0.6);
             line-height: 1.5;
         }
-
+        
         .menu-card .tag {
             display: inline-block;
             padding: 0.2rem 0.6rem;
@@ -514,13 +514,13 @@
             font-size: 0.75rem;
             margin-top: 0.5rem;
         }
-
+        
         /* Gallery Section */
         .gallery {
             padding: 5rem 5%;
             background: var(--darker);
         }
-
+        
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -529,25 +529,25 @@
             max-width: 1200px;
             margin: 0 auto;
         }
-
+        
         .gallery-item {
             border-radius: 15px;
             overflow: hidden;
             position: relative;
             cursor: pointer;
         }
-
+        
         .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s;
         }
-
+        
         .gallery-item:hover img {
             transform: scale(1.1);
         }
-
+        
         .gallery-item::after {
             content: '';
             position: absolute;
@@ -559,22 +559,22 @@
             opacity: 0;
             transition: opacity 0.3s;
         }
-
+        
         .gallery-item:hover::after {
             opacity: 1;
         }
-
+        
         .gallery-item.large {
             grid-column: span 2;
             grid-row: span 2;
         }
-
+        
         /* Reviews Section */
         .reviews {
             padding: 5rem 5%;
             background: var(--dark);
         }
-
+        
         .reviews-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -582,7 +582,7 @@
             max-width: 1200px;
             margin: 0 auto;
         }
-
+        
         .review-card {
             background: var(--darker);
             border: 1px solid rgba(212, 163, 115, 0.2);
@@ -590,25 +590,25 @@
             padding: 2rem;
             transition: all 0.3s;
         }
-
+        
         .review-card:hover {
             border-color: var(--primary);
             transform: translateY(-5px);
         }
-
+        
         .review-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 1rem;
         }
-
+        
         .reviewer-info {
             display: flex;
             align-items: center;
             gap: 1rem;
         }
-
+        
         .reviewer-avatar {
             width: 50px;
             height: 50px;
@@ -621,34 +621,34 @@
             color: var(--darker);
             font-size: 1.2rem;
         }
-
+        
         .reviewer-name {
             font-weight: 600;
             color: var(--light);
         }
-
+        
         .review-date {
             font-size: 0.85rem;
             color: rgba(254, 250, 224, 0.5);
         }
-
+        
         .review-stars {
             color: #ffc107;
             margin-bottom: 1rem;
         }
-
+        
         .review-text {
             color: rgba(254, 250, 224, 0.7);
             line-height: 1.7;
             font-style: italic;
         }
-
+        
         /* Location & Contact */
         .contact {
             padding: 5rem 5%;
             background: var(--darker);
         }
-
+        
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -657,58 +657,58 @@
             margin: 0 auto;
             align-items: center;
         }
-
+        
         .contact-info h3 {
             font-family: 'Playfair Display', serif;
             font-size: 2rem;
             color: var(--primary);
             margin-bottom: 1.5rem;
         }
-
+        
         .contact-item {
             display: flex;
             align-items: flex-start;
             gap: 1rem;
             margin-bottom: 1.5rem;
         }
-
+        
         .contact-item i {
             font-size: 1.3rem;
             color: var(--primary);
             margin-top: 0.3rem;
         }
-
+        
         .contact-item h4 {
             font-size: 1.1rem;
             color: var(--light);
             margin-bottom: 0.3rem;
         }
-
+        
         .contact-item p {
             color: rgba(254, 250, 224, 0.7);
             line-height: 1.6;
         }
-
+        
         .map-container {
             border-radius: 20px;
             overflow: hidden;
             border: 2px solid rgba(212, 163, 115, 0.3);
             height: 400px;
         }
-
+        
         .map-container iframe {
             width: 100%;
             height: 100%;
             border: none;
         }
-
+        
         /* Footer */
         footer {
             background: #0a0a0a;
             padding: 3rem 5% 1rem;
             border-top: 1px solid rgba(212, 163, 115, 0.2);
         }
-
+        
         .footer-grid {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -716,25 +716,25 @@
             max-width: 1200px;
             margin: 0 auto 3rem;
         }
-
+        
         .footer-brand h3 {
             font-family: 'Playfair Display', serif;
             font-size: 1.8rem;
             color: var(--gold);
             margin-bottom: 1rem;
         }
-
+        
         .footer-brand p {
             color: rgba(254, 250, 224, 0.6);
             line-height: 1.7;
             margin-bottom: 1.5rem;
         }
-
+        
         .social-links {
             display: flex;
             gap: 1rem;
         }
-
+        
         .social-links a {
             width: 40px;
             height: 40px;
@@ -747,37 +747,37 @@
             text-decoration: none;
             transition: all 0.3s;
         }
-
+        
         .social-links a:hover {
             background: var(--primary);
             color: var(--darker);
             transform: translateY(-3px);
         }
-
+        
         .footer-links h4 {
             color: var(--light);
             margin-bottom: 1.5rem;
             font-size: 1.1rem;
         }
-
+        
         .footer-links ul {
             list-style: none;
         }
-
+        
         .footer-links li {
             margin-bottom: 0.8rem;
         }
-
+        
         .footer-links a {
             color: rgba(254, 250, 224, 0.6);
             text-decoration: none;
             transition: color 0.3s;
         }
-
+        
         .footer-links a:hover {
             color: var(--primary);
         }
-
+        
         .footer-bottom {
             text-align: center;
             padding-top: 2rem;
@@ -785,7 +785,7 @@
             color: rgba(254, 250, 224, 0.4);
             font-size: 0.9rem;
         }
-
+        
         /* Animations */
         @keyframes fadeInUp {
             from {
@@ -797,92 +797,140 @@
                 transform: translateY(0);
             }
         }
-
+        
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
             transition: all 0.8s ease;
         }
-
+        
         .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
         }
-
+        
         /* Responsive */
         @media (max-width: 968px) {
             .hero h1 {
                 font-size: 3rem;
             }
-
+            
+            .floating-info {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+            
             .about-grid, .contact-grid {
                 grid-template-columns: 1fr;
             }
-
+            
             .gallery-grid {
                 grid-template-columns: repeat(2, 1fr);
                 grid-template-rows: repeat(3, 200px);
             }
-
+            
             .gallery-item.large {
                 grid-column: span 2;
                 grid-row: span 1;
             }
-
+            
             .footer-grid {
                 grid-template-columns: 1fr 1fr;
             }
         }
-
+        
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
             }
-
+            
             .mobile-menu {
                 display: block;
             }
-
+            
+            .hero {
+                padding: 100px 1.5rem 140px;
+            }
+            
             .hero h1 {
                 font-size: 2.5rem;
             }
-
+            
             .floating-info {
-                bottom: -30px;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.8rem;
+                margin-top: 2rem;
             }
-
+            
             .info-card {
-                min-width: 140px;
-                padding: 1rem;
+                padding: 1rem 0.5rem;
             }
-
+            
+            .info-card i {
+                font-size: 1.2rem;
+            }
+            
+            .info-card h4 {
+                font-size: 0.8rem;
+            }
+            
+            .info-card p {
+                font-size: 0.9rem;
+            }
+            
             .features-grid {
                 grid-template-columns: 1fr;
             }
-
+            
             .menu-grid {
                 grid-template-columns: 1fr;
             }
-
+            
             .gallery-grid {
                 grid-template-columns: 1fr;
                 grid-template-rows: repeat(6, 200px);
             }
-
+            
             .gallery-item.large {
                 grid-column: span 1;
             }
-
+            
             .footer-grid {
                 grid-template-columns: 1fr;
                 text-align: center;
             }
-
+            
             .social-links {
                 justify-content: center;
             }
         }
-
+        
+        @media (max-width: 480px) {
+            .floating-info {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.6rem;
+            }
+            
+            .info-card {
+                padding: 0.8rem 0.4rem;
+                border-radius: 10px;
+            }
+            
+            .info-card i {
+                font-size: 1.1rem;
+                margin-bottom: 0.3rem;
+            }
+            
+            .info-card h4 {
+                font-size: 0.75rem;
+                margin-bottom: 0.2rem;
+            }
+            
+            .info-card p {
+                font-size: 0.85rem;
+            }
+        }
+        
         /* Mobile Menu Panel */
         .mobile-panel {
             position: fixed;
@@ -897,11 +945,11 @@
             transition: right 0.3s ease;
             box-shadow: -5px 0 30px rgba(0,0,0,0.5);
         }
-
+        
         .mobile-panel.active {
             right: 0;
         }
-
+        
         .mobile-panel .close-btn {
             font-size: 1.5rem;
             color: var(--primary);
@@ -910,22 +958,22 @@
             display: block;
             text-align: right;
         }
-
+        
         .mobile-panel ul {
             list-style: none;
         }
-
+        
         .mobile-panel li {
             margin-bottom: 1.5rem;
         }
-
+        
         .mobile-panel a {
             color: var(--light);
             text-decoration: none;
             font-size: 1.2rem;
             font-weight: 500;
         }
-
+        
         .overlay {
             position: fixed;
             top: 0;
@@ -938,7 +986,7 @@
             visibility: hidden;
             transition: all 0.3s;
         }
-
+        
         .overlay.active {
             opacity: 1;
             visibility: visible;
@@ -964,7 +1012,7 @@
             <i class="fas fa-bars"></i>
         </div>
     </nav>
-
+    
     <!-- Mobile Menu -->
     <div class="overlay" onclick="toggleMobileMenu()"></div>
     <div class="mobile-panel" id="mobilePanel">
@@ -1013,7 +1061,7 @@
                 </a>
             </div>
         </div>
-
+        
         <div class="floating-info">
             <div class="info-card">
                 <i class="fas fa-clock"></i>
@@ -1092,7 +1140,7 @@
             <p class="subtitle">Our Specialties</p>
             <h2>Popular Menu</h2>
         </div>
-
+        
         <div class="menu-tabs fade-in">
             <button class="menu-tab active" onclick="filterMenu('all')">All Items</button>
             <button class="menu-tab" onclick="filterMenu('chinese')">Chinese</button>
@@ -1100,7 +1148,7 @@
             <button class="menu-tab" onclick="filterMenu('rolls')">Rolls</button>
             <button class="menu-tab" onclick="filterMenu('north')">North Indian</button>
         </div>
-
+        
         <div class="menu-grid" id="menuGrid">
             <div class="menu-card" data-category="chinese">
                 <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" class="menu-card-image" alt="Chicken Chilli">
@@ -1113,7 +1161,7 @@
                     <span class="tag">Chinese</span>
                 </div>
             </div>
-
+            
             <div class="menu-card" data-category="chinese">
                 <img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" class="menu-card-image" alt="Chicken Fried Rice">
                 <div class="menu-card-content">
@@ -1125,7 +1173,7 @@
                     <span class="tag">Chinese</span>
                 </div>
             </div>
-
+            
             <div class="menu-card" data-category="chinese">
                 <img src="https://images.unsplash.com/photo-1525755662778-989d0524087e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" class="menu-card-image" alt="Egg Chowmein">
                 <div class="menu-card-content">
@@ -1137,7 +1185,7 @@
                     <span class="tag">Chinese</span>
                 </div>
             </div>
-
+            
             <div class="menu-card" data-category="rolls">
                 <img src="https://images.unsplash.com/photo-1625220194771-7eb0f82d0ac4?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" class="menu-card-image" alt="Double Egg Roll">
                 <div class="menu-card-content">
@@ -1149,7 +1197,7 @@
                     <span class="tag">Rolls</span>
                 </div>
             </div>
-
+            
             <div class="menu-card" data-category="rolls">
                 <img src="https://images.unsplash.com/photo-1606491956689-2ea866880c84?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" class="menu-card-image" alt="Chicken Egg Roll">
                 <div class="menu-card-content">
@@ -1161,7 +1209,7 @@
                     <span class="tag">Rolls</span>
                 </div>
             </div>
-
+            
             <div class="menu-card" data-category="rolls">
                 <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" class="menu-card-image" alt="Mutton Roll">
                 <div class="menu-card-content">
@@ -1173,7 +1221,7 @@
                     <span class="tag">Rolls</span>
                 </div>
             </div>
-
+            
             <div class="menu-card" data-category="biryani">
                 <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" class="menu-card-image" alt="Chicken Biryani">
                 <div class="menu-card-content">
@@ -1185,7 +1233,7 @@
                     <span class="tag">Biryani</span>
                 </div>
             </div>
-
+            
             <div class="menu-card" data-category="chinese">
                 <img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" class="menu-card-image" alt="Chicken Popcorn">
                 <div class="menu-card-content">
@@ -1197,7 +1245,7 @@
                     <span class="tag">Chinese</span>
                 </div>
             </div>
-
+            
             <div class="menu-card" data-category="chinese">
                 <img src="https://images.unsplash.com/photo-1552611052-33e04de081de?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" class="menu-card-image" alt="Shanghai Mix">
                 <div class="menu-card-content">
@@ -1209,7 +1257,7 @@
                     <span class="tag">Chinese</span>
                 </div>
             </div>
-
+            
             <div class="menu-card" data-category="north">
                 <img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" class="menu-card-image" alt="Non-Veg Hakka Noodles">
                 <div class="menu-card-content">
@@ -1221,7 +1269,7 @@
                     <span class="tag">North Indian</span>
                 </div>
             </div>
-
+            
             <div class="menu-card" data-category="chinese">
                 <img src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" class="menu-card-image" alt="Chicken Spring Roll">
                 <div class="menu-card-content">
@@ -1233,7 +1281,7 @@
                     <span class="tag">Chinese</span>
                 </div>
             </div>
-
+            
             <div class="menu-card" data-category="chinese">
                 <img src="https://images.unsplash.com/photo-1529006557810-274b9b2fc783?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" class="menu-card-image" alt="Mix Chowmein">
                 <div class="menu-card-content">
@@ -1306,7 +1354,7 @@
                 </div>
                 <p class="review-text">"The Rasoiya is an excellent restaurant! The food is reasonably priced and worth the money. The quantity of food is good too. I highly recommend it!"</p>
             </div>
-
+            
             <div class="review-card fade-in">
                 <div class="review-header">
                     <div class="reviewer-info">
@@ -1326,7 +1374,7 @@
                 </div>
                 <p class="review-text">"Best food with affordable prices, nice atmosphere. Totally awesome. Love you The Rasoiya. Chicken biryani and rolls are must-try!"</p>
             </div>
-
+            
             <div class="review-card fade-in">
                 <div class="review-header">
                     <div class="reviewer-info">
@@ -1460,21 +1508,21 @@
                 navbar.classList.remove('scrolled');
             }
         });
-
+        
         // Mobile menu toggle
         function toggleMobileMenu() {
             document.getElementById('mobilePanel').classList.toggle('active');
             document.querySelector('.overlay').classList.toggle('active');
         }
-
+        
         // Menu filtering
         function filterMenu(category) {
             const cards = document.querySelectorAll('.menu-card');
             const tabs = document.querySelectorAll('.menu-tab');
-
+            
             tabs.forEach(tab => tab.classList.remove('active'));
             event.target.classList.add('active');
-
+            
             cards.forEach(card => {
                 if (category === 'all' || card.dataset.category === category) {
                     card.style.display = 'flex';
@@ -1484,13 +1532,13 @@
                 }
             });
         }
-
+        
         // Scroll animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
         };
-
+        
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1498,9 +1546,9 @@
                 }
             });
         }, observerOptions);
-
+        
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
+        
         // Smooth scroll for nav links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
@@ -1516,4 +1564,10 @@
         });
     </script>
 </body>
-</html>
+</html>'''
+
+with open('/mnt/agents/output/the_rasoiya_website.html', 'w', encoding='utf-8') as f:
+    f.write(html_content)
+
+print("✅ Fixed website saved!")
+print("📁 File: /mnt/agents/output/the_rasoiya_website.html")
